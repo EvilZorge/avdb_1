@@ -1,0 +1,14 @@
+table class="bank_table"
+  thead
+    tr
+      th Charcode
+      th Name
+      th Rate
+  tbody
+    - @data.each do |data|
+      tr
+        td= data[0]
+        td= data[1]
+        td= data[2]
+
+
