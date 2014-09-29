@@ -1,2 +1,17 @@
-= high_chart("firstChart", @chart)
-= high_chart("secondChart", @chartSecond)
+div
+  div style="float: left"
+    table class="changeData"
+      thead
+        tr
+          th Id
+          th Price
+          th State
+      tbody
+        - @balance.each do |b|
+          tr
+            td= b.id
+            td= b.price
+            td= b.state
+  div style="float: left"            
+    = high_chart("firstChart", @chart)
+    = high_chart("secondChart", @chartSecond)

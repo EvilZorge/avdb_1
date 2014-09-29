@@ -46,6 +46,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     debug_inspector (0.0.2)
+    ejs (1.1.1)
     erubis (2.7.0)
     execjs (2.2.1)
     hash-deep-merge (0.1.1)
@@ -147,6 +148,7 @@ DEPENDENCIES
   binding_of_caller
   bootstrap-datepicker-rails
   coffee-rails (~> 4.0.0)
+  ejs
   jbuilder (~> 2.0)
   jquery-rails
   lazy_high_charts

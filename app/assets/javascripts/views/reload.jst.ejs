@@ -1,0 +1,20 @@
+<table class="changeData">
+  <thead>
+    <tr>
+      <th> Charcode </th>
+      <th> Name </th>
+      <th> Rate </th>
+      <th> RateToday </th>
+    </tr>
+  </thead>  
+  <tbody>
+    <% data.map(function(c) { %>
+      <tr>
+        <td><%= c.charcode %></td>
+        <td><%= c.name %></td>
+        <td><%= c.rate %></td>
+        <td><%= c.rateToday %></td>
+      </tr>
+    <% }) %>  
+  </tbody> 
+</table>       

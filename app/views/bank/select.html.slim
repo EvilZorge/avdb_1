@@ -1,14 +1,26 @@
-table class="bank_table"
-  thead
-    tr
-      th Charcode
-      th Name
-      th Rate
-  tbody
-    - @data.each do |data|
-      tr
-        td= data[0]
-        td= data[1]
-        td= data[2]
-
-
+div
+  div style="float: left"
+    table class="changeData"
+      thead
+        tr
+          th 
+          th Name
+      tbody
+        - @currency.each do |c|
+          tr
+            td= check_box_tag "info[]", c.id, false, :id => "info_#{c.id}"
+            td= c.name  
+  div style="float: left"
+    .complete
+  div style="float: left" 
+    p Currency converter
+    = text_field_tag 'firstAmount', nil, id:'firstAmount'
+    = select_tag 'firstCountry', options_from_collection_for_select(@currency, "id", "charcode")+"<option>BLR</option>".html_safe
+    div   
+      = text_field_tag 'secondAmount', nil, id:'secondAmount', disabled: true
+      = select_tag 'secondCountry', options_from_collection_for_select(@currency, "id", "charcode")+"<option>BLR</option>".html_safe
+  div style="float: left; margin: 20px; border: 2px solid red"
+    p Build chart
+    = form_tag build_bank_index_path, method: :post do 
+      = select_tag 'graph', options_from_collection_for_select(@currency, "id", "charcode") 
+      = submit_tag 'Build graph'

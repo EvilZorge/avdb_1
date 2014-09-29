@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require highcharts/highcharts
+//= require money
 //= require_tree .
 
 
