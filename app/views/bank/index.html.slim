@@ -1,3 +1,5 @@
-= form_tag select_bank_index_path, method: :get do
+h1 style="text-align: center" Анализ курса валют
+p style="text-align: center" Выберите дату 
+= form_tag select_bank_index_path, style: "text-align: center", method: :get do
   = text_field_tag :data, params[:data], id:'datepicker'
   = submit_tag 'Enter'

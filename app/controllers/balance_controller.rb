@@ -7,6 +7,7 @@ class BalanceController < ApplicationController
     @group.each do |key, value|
       @number[key]= Hash[value.group_by(&:state).map {|k,v|  [k,v.sum(&:price) ]}]
     end
+    #binding.pry 
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.chart({:defaultSeriesType=>"column"})
       f.plot_options({:column=>{:stacking=>"normal"}})
@@ -24,8 +25,8 @@ class BalanceController < ApplicationController
       f.plot_options({:column=>{:stacking=>"normal"}})
       f.title(:text => "Full balance's amount of sold and bought assets")
       f.xAxis(:categories => ['All'])
-      f.series(:name => "Sell", :yAxis => 0, :data => [@balance.where(state:'sell').count], color: '#92B1D4' )
-      f.series(:name => "Buy", :yAxis => 0, :data => [@balance.where(state:'buy').count*(-1)], color: '#AF6A86')
+      f.series(:name => "Sell", :yAxis => 0, :data => [@balance.where(state:'sell').sum(:price)], color: '#92B1D4' )
+      f.series(:name => "Buy", :yAxis => 0, :data => [@balance.where(state:'buy').sum(:price) * (-1)], color: '#AF6A86')
       f.yAxis [
         {:title => {:text => "Sell", :margin => 70} },
       {:title => {:text => "Buy"}, :opposite => true},]

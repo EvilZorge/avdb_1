@@ -1,0 +1,15 @@
+= search_form_for @q do |f| 
+  div
+    = f.label :name_cont, 'Имя'
+    '
+    = f.search_field :name_cont
+  div
+    = f.label :surname_cont, 'Фамилия'
+    '
+    = f.search_field :surname_cont
+  div
+    = f.label :middlename_cont, 'Отчество'
+    '
+    = f.search_field :middlename_cont 
+  
+  = f.submit 'Поиск'

@@ -12,10 +12,21 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require twitter/bootstrap
 //= require turbolinks
 //= require bootstrap-datepicker
 //= require highcharts/highcharts
 //= require money
 //= require_tree .
 
+$(document).ready(function() {
 
+  $('.search-button').click(function() {
+    $(this).parent().find('.search-fields').toggle();
+  });
+
+  $('#trigger').click(function()
+  {
+    $('#advanced_search').toggle();
+  });
+});

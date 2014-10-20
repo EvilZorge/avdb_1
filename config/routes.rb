@@ -9,4 +9,22 @@ Rails.application.routes.draw do
       post :build
     end
   end
+
+  resources :natural_people do 
+    collection do 
+      get :send_email
+      get :multiple_email_send
+      get :send_sms
+    end
+  end
+  resources :legal_people do
+    collection do
+      get :send_email
+      get :multiple_email_send
+      get :send_sms
+    end
+  end
+  resources :people, only: :index
+
+  root to: 'people#index'
 end

@@ -12,7 +12,7 @@ require 'open-uri'
     urlToday = "http://www.nbrb.by/Services/XmlExRates.aspx?ondate"+Date.today.strftime("%m/%d/%y")
     doc = Nokogiri::XML(open(url))
     docToday = Nokogiri::XML(open(urlToday))
-    binding.pry
+    #binding.pry
     @dataToday= docToday.xpath("//Currency").map{ |t| t.elements[4].children.text }
     @data = doc.xpath("//Currency").map{ |t| [t.elements[1].children.text, t.elements[3].children.text, t.elements[4].children.text, t.first[1]] }
     @data.count.times do |i|
@@ -57,21 +57,21 @@ require 'open-uri'
     @chart = LazyHighCharts::HighChart.new('graph') do |f|
       f.chart({
             type: 'line'})
-      f.title(:text => "Last 15 days")
+      f.title(:text => "Последние 15 дней")
       f.xAxis(:categories => @result['date'][0][0])
-      f.series(:name => "Rate", :yAxis => 0, :data => @result['value'][0][0], color: 'red')
+      f.series(:name => "Значение", :yAxis => 0, :data => @result['value'][0][0], color: 'red')
       f.yAxis [
-        {:title => {:text => "Currency", :margin => 70} }]
+        {:title => {:text => "Значение валюты", :margin => 70} }]
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
     end
     @chartSecond = LazyHighCharts::HighChart.new('graph') do |f|
       f.chart({
             type: 'line'})
-      f.title(:text => "Last month")
+      f.title(:text => "Последний месяц")
       f.xAxis(:categories => @resultMonth['date'][0][0])
-      f.series(:name => "Rate", :yAxis => 0, :data => @resultMonth['value'][0][0], color: 'green')
+      f.series(:name => "Значение", :yAxis => 0, :data => @resultMonth['value'][0][0], color: 'green')
       f.yAxis [
-        {:title => {:text => "Currency", :margin => 70} }]
+        {:title => {:text => "Значение валюты", :margin => 70} }]
       f.legend(:align => 'right', :verticalAlign => 'top', :y => 75, :x => -50, :layout => 'vertical',)
     end
   end

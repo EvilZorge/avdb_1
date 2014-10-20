@@ -1,0 +1,63 @@
+- if @natural_person.errors.present?
+  - @natural_person.errors.full_messages.each do |msg|
+    div
+      = msg
+= form_for @natural_person, html: { class: "form form-horizontal natural_person" } do |f|
+  .form-group
+    = f.label :name, 'Имя', :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@natural_person[:name])
+  .form-group
+    = f.label :surname, 'Фамилия', :class => 'control-label'
+    .controls
+      = f.text_field :surname, :class => 'form-control'
+    = error_span(@natural_person[:surname])
+  .form-group
+    = f.label :middlename, 'Отчество', :class => 'control-label'
+    .controls
+      = f.text_field :middlename, :class => 'form-control'
+    = error_span(@natural_person[:middlename])
+  .form-group
+    = f.label :address, 'Адрес', :class => 'control-label'
+    .controls
+      = f.text_field :address, :class => 'form-control'
+    = error_span(@natural_person[:address])
+  .form-group
+    = f.label :passport_data, 'Паспорт', :class => 'control-label'
+    .controls
+      = f.text_field :passport_data, :class => 'form-control'
+    = error_span(@natural_person[:passport_data])
+  .form-group
+    = f.label :phone, 'Телефон', :class => 'control-label'
+    .controls
+      = f.text_field :phone, :class => 'form-control'
+    = error_span(@natural_person[:phone])
+  .form-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'form-control'
+    = error_span(@natural_person[:email])
+  .form-group
+    = f.label :skype, :class => 'control-label'
+    .controls
+      = f.text_field :skype, :class => 'form-control'
+    = error_span(@natural_person[:skype])
+  .form-group
+    = f.label :work_place, 'Место работы', :class => 'control-label'
+    .controls
+      = f.text_field :work_place, :class => 'form-control'
+    = error_span(@natural_person[:work_place])
+  .form-group
+    = f.label :function, 'Должность', :class => 'control-label'
+    .controls
+      = f.text_field :function, :class => 'form-control'
+    = error_span(@natural_person[:function])
+  .form-group
+    = f.label :marital_status, 'Семейное положение', :class => 'control-label'
+    .controls
+      = f.text_field :marital_status, :class => 'form-control'
+    = error_span(@natural_person[:marital_status])
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to 'Отменить', natural_people_path, :class => 'btn'

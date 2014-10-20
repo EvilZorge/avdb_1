@@ -4,7 +4,7 @@ div
       thead
         tr
           th 
-          th Name
+          th Название валюты
       tbody
         - @currency.each do |c|
           tr
@@ -12,15 +12,20 @@ div
             td= c.name  
   div style="float: left"
     .complete
-  div style="float: left" 
-    p Currency converter
+  div style="float: left"
+    p Измените дату
+    = form_tag select_bank_index_path, method: :get do
+      = text_field_tag :data, params[:data], id:'datepicker'
+      = submit_tag 'Подтвердить'    
+  div style="float: left; margin-left: 20px" 
+    p Конвертация валют
     = text_field_tag 'firstAmount', nil, id:'firstAmount'
     = select_tag 'firstCountry', options_from_collection_for_select(@currency, "id", "charcode")+"<option>BLR</option>".html_safe
     div   
       = text_field_tag 'secondAmount', nil, id:'secondAmount', disabled: true
       = select_tag 'secondCountry', options_from_collection_for_select(@currency, "id", "charcode")+"<option>BLR</option>".html_safe
-  div style="float: left; margin: 20px; border: 2px solid red"
-    p Build chart
+  div style="float: left; margin-left: 20px"
+    p Построить график изменения валюты
     = form_tag build_bank_index_path, method: :post do 
       = select_tag 'graph', options_from_collection_for_select(@currency, "id", "charcode") 
-      = submit_tag 'Build graph'
+      = submit_tag 'Построить график изменения валюты' 

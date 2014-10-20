@@ -1,0 +1,63 @@
+- if @legal_person.errors.present?
+  - @legal_person.errors.full_messages.each do |msg|
+    div
+      = msg
+= form_for @legal_person, html: { class: "form form-horizontal legal_person" } do |f|
+  .form-group
+    = f.label :name, 'Название', :class => 'control-label'
+    .controls
+      = f.text_field :name, :class => 'form-control'
+    = error_span(@legal_person[:name])
+  .form-group
+    = f.label :address, 'Адрес', :class => 'control-label'
+    .controls
+      = f.text_field :address, :class => 'form-control'
+    = error_span(@legal_person[:address])
+  .form-group
+    = f.label :registration_code, 'Код регистрации', :class => 'control-label'
+    .controls
+      = f.text_field :registration_code, :class => 'form-control'
+    = error_span(@legal_person[:registration_code])  
+  .form-group
+    = f.label :leader, 'Руководитель', :class => 'control-label'
+    .controls
+      = f.text_field :leader, :class => 'form-control'
+    = error_span(@legal_person[:leader])
+  .form-group
+    = f.label :accountant_general, 'Главный бухгалтер', :class => 'control-label'
+    .controls
+      = f.text_field :accountant_general, :class => 'form-control'
+    = error_span(@legal_person[:accountant_general])
+  .form-group
+    = f.label :director, 'Директор', :class => 'control-label'
+    .controls
+      = f.text_field :director, :class => 'form-control'
+    = error_span(@legal_person[:director])
+  .form-group
+    = f.label :sub_company, 'Дочерняя компания', :class => 'control-label'
+    .controls
+      = f.text_field :sub_company, :class => 'form-control'
+    = error_span(@legal_person[:sub_company])    
+  .form-group
+    = f.label :phone, 'Телефон', :class => 'control-label'
+    .controls
+      = f.text_field :phone, :class => 'form-control'
+    = error_span(@legal_person[:phone])
+  .form-group
+    = f.label :email, :class => 'control-label'
+    .controls
+      = f.text_field :email, :class => 'form-control'
+    = error_span(@legal_person[:email])
+  .form-group
+    = f.label :skype, :class => 'control-label'
+    .controls
+      = f.text_field :skype, :class => 'form-control'
+    = error_span(@legal_person[:skype])
+  .form-group
+    = f.label :creation_date, 'Дата создания', :class => 'control-label'
+    .controls
+      = f.text_field :creation_date, :class => 'form-control'
+    = error_span(@legal_person[:creation_date])
+  = f.submit nil, :class => 'btn btn-primary'
+  '
+  = link_to 'Отменить', legal_people_path, :class => 'btn'
