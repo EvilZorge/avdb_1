@@ -53,7 +53,6 @@ class NaturalPeopleController < ApplicationController
     if params[:natural_person_ids]
       @people = NaturalPerson.find(params[:natural_person_ids])
       @people.each do |person|
-        binding.pry
         PersonMailer.welcome_email(person).deliver
       end
       flash[:success] = "Письма отправлены"
@@ -67,7 +66,6 @@ class NaturalPeopleController < ApplicationController
   def send_sms
     @person = NaturalPerson.find(params[:id])
     @client = Twilio::REST::Client.new ENV['TWILIO_ID'], ENV['TWILIO_SECRET']
-    binding.pry
     @client.account.messages.create( from: ENV['TWILIO_PHONE'], to: @person.phone, body: "Hey, #{@person.name}")
   end
 
