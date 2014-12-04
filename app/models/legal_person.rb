@@ -1,4 +1,6 @@
 class LegalPerson < ActiveRecord::Base
+  belongs_to :user
+
   validates :name, presence: true, length: { minimum: 3,  maximum: 40 }, format: { with: /\A[a-zA-Zа-яА-Я\s]+\z/,
     message: "only allows letters" }
   validates :address, presence: true, length: { minimum: 2,  maximum: 100 }

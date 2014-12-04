@@ -1,4 +1,6 @@
 class NaturalPerson < ActiveRecord::Base
+  belongs_to :user
+  
   validates :name, presence: true, length: { minimum: 3,  maximum: 30 }, format: { with: /\A[a-zA-Zа-яА-Я\s]+\z/,
     message: "only allows letters" }
   validates :surname, presence: true, length: { minimum: 2,  maximum: 30 }, format: { with: /\A[a-zA-Zа-яА-Я\s]+\z/,
