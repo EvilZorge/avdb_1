@@ -1,107 +1,107 @@
 = search_form_for @q do |f| 
   div
-    = f.label :name_cont, 'Название'
+    = f.label :name_cont, 'Name'
     '
     = f.search_field :name_cont
     '
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More 
     span.search-fields
-      = f.label :name_start, 'Начало названия'
+      = f.label :name_start, 'Begin'
       '
       = f.search_field :name_start
       '
-      = f.label :name_end, 'окончание'
+      = f.label :name_end, 'end'
       '
       = f.search_field :name_end
       '
-      = f.label :name_not_cont, 'Не содержит'
+      = f.label :name_not_cont, 'Not match'
       '
       = f.search_field :name_not_cont
   div
-    = f.label :address_cont, 'Адрес'
+    = f.label :address_cont, 'Address'
     '
     = f.search_field :address_cont
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More 
     span.search-fields
-      = f.label :address_start, 'Начало'
+      = f.label :address_start, 'Begin'
       '
       = f.search_field :address_start
       '
-      = f.label :address_end, 'окончание'
+      = f.label :address_end, 'end'
       '
       = f.search_field :address_end
       '
-      = f.label :address_not_cont, 'Не содержит'
+      = f.label :address_not_cont, 'Not match'
       '
       = f.search_field :address_not_cont    
   div
-    = f.label :registration_code_cont, 'Код регистрации'
+    = f.label :registration_code_cont, 'Registration code'
     '
     = f.search_field :registration_code_cont
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More 
     span.search-fields
-      = f.label :registration_code_not_cont, 'Не содержит'
+      = f.label :registration_code_not_cont, 'Not match'
       '
       = f.search_field :registration_code_not_cont
   div
-    = f.label :director_cont, 'ФИО директора'
+    = f.label :director_cont, 'Director'
     '
     = f.search_field :director_cont
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More
     span.search-fields
-      = f.label :director_start, 'Начало'
+      = f.label :director_start, 'Begin'
       '
       = f.search_field :director_start
       '
-      = f.label :director_end, 'окончание'
+      = f.label :director_end, 'end'
       '
       = f.search_field :director_end
       '
-      = f.label :director_not_cont, 'Не содержит'
+      = f.label :director_not_cont, 'Not match'
       '
       = f.search_field :director_not_cont
   div
-    = f.label :leader_cont, 'ФИО руководителя'
+    = f.label :leader_cont, 'Leader'
     '
     = f.search_field :leader_cont
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More
     span.search-fields
-      = f.label :leader_start, 'Начало'
+      = f.label :leader_start, 'Begin'
       '
       = f.search_field :leader_start
       '
-      = f.label :leader_end, 'окончание'
+      = f.label :leader_end, 'end'
       '
       = f.search_field :leader_end
       '
-      = f.label :leader_not_cont, 'Не содержит'
+      = f.label :leader_not_cont, 'Not match'
       '
       = f.search_field :leader_not_cont    
   div
-    = f.label :accountant_general_cont, 'ФИО главного бухгалтера'
+    = f.label :accountant_general_cont, 'Accountant general'
     '
     = f.search_field :accountant_general_cont
     a.search-button class="btn btn-xs btn-warning"
-      | Подробнее 
+      | More 
     span.search-fields
-      = f.label :accountant_general_start, 'Начало'
+      = f.label :accountant_general_start, 'Begin'
       '
       = f.search_field :accountant_general_start
       '
-      = f.label :accountant_general_end, 'окончание'
+      = f.label :accountant_general_end, 'end'
       '
       = f.search_field :accountant_general_end
       '
-      = f.label :accountant_general_not_cont, 'Не содержит'
+      = f.label :accountant_general_not_cont, 'Not match'
       '
       = f.search_field :accountant_general_not_cont        
   div
-    = f.label :phone_cont, 'Телефон'
+    = f.label :phone_cont, 'Phone'
     '
     = f.search_field :phone_cont
   div
@@ -113,7 +113,7 @@
     '
     = f.search_field :skype_cont
   div
-    = f.label :creation_date_cont, 'Дата создания'
+    = f.label :creation_date_cont, 'Creation date'
     '
     = f.search_field :creation_date_cont    
-  = f.submit 'Поиск'
+  = f.submit 'Search'

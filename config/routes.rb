@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   resources :balance
-
+  resource :users, only: :show
   resources :bank do
     collection do
       get :select

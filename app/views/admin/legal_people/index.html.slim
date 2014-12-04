@@ -1,0 +1,48 @@
+div class="page-header"
+  h1=t '.title', :default => 'Legal people'
+div.search_form
+  = render partial: 'search_form'
+div
+  button#trigger class="btn btn-primary"  Advanced search 
+  div.advanced_search_form#advanced_search  
+    = render partial: 'advanced_search_form'    
+div
+  = form_tag multiple_email_send_legal_people_path, method: :get do
+      table.table-bordered
+      thead
+        tr
+          th
+          th= sort_link @q, :name, 'Name'
+          th= sort_link @q, :address, 'Address'
+          th= sort_link @q, :registration_code, 'Registration code'
+          th= sort_link @q, :director, 'Director'
+          th= sort_link @q, :leader, 'Leader'
+          th= sort_link @q, :accountant_general, 'Accountant general'
+          th= sort_link @q, :sub_company, 'Subcompany'
+          th= sort_link @q, :phone, 'Phone'
+          th= sort_link @q, :email, 'Email'
+          th= sort_link @q, :skype, 'Skype'
+          th= sort_link @q, :creation_date, 'Creation date'
+          th
+      tbody
+        - @people.each do |legal_person|
+          tr
+            td= check_box_tag "legal_person_ids[]", legal_person.id
+            td= legal_person.name
+            td= legal_person.address
+            td= legal_person.registration_code
+            td= legal_person.director
+            td= legal_person.leader
+            td= legal_person.accountant_general
+            td= legal_person.sub_company
+            td= legal_person.phone
+            td= legal_person.email
+            td= legal_person.skype
+            td= legal_person.creation_date
+            td
+              = link_to 'Edit', edit_legal_person_path(legal_person), :class => 'btn btn-xs btn-success'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), legal_person_path(legal_person), :method => :delete, :class => 'btn btn-xs btn-danger'
+              = link_to 'Send email', send_email_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
+              = link_to 'Send sms', send_sms_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
+    = submit_tag 'Send email to checked people',  :class => 'btn btn-success btn-s' 
+  = will_paginate @people

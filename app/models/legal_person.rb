@@ -1,5 +1,5 @@
 class LegalPerson < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   validates :name, presence: true, length: { minimum: 3,  maximum: 40 }, format: { with: /\A[a-zA-Zа-яА-Я\s]+\z/,
     message: "only allows letters" }

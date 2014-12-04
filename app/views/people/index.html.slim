@@ -1,6 +1,9 @@
 div style="text-align: center"
-  h1 Выберите категорию
+  h1 Welcome to our bank
+  strong Sign In or Sign Up to continue 
   div 
-    = link_to 'Физические лица', natural_people_path, class:"btn btn-success"
+    br
+    = link_to 'Sign in', new_user_session_path, class:"btn btn-success"
     '
-    = link_to 'Юридические лица', legal_people_path, class:"btn btn-success"
+    = link_to 'Sign up', new_user_registration_path, class:"btn btn-default"
+
