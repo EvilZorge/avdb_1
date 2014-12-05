@@ -1,0 +1,48 @@
+- model_class = Credit
+div
+p
+  strong= model_class.human_attribute_name(:purpose) + ':'
+  br
+  = @credit.purpose
+p
+  strong= model_class.human_attribute_name(:amount) + ':'
+  br
+  = @credit.amount
+p
+  strong= model_class.human_attribute_name(:time) + ':'
+  br
+  = @credit.time
+h3 Credit type data  
+p
+  strong= model_class.human_attribute_name(:credit_kind) + ':'
+  br
+  = @credit.credit_kind.name
+p
+  strong= model_class.human_attribute_name(:max_amount) + ':'
+  br
+  = @credit.credit_kind.max_amount
+p
+  strong= model_class.human_attribute_name(:condition) + ':'
+  br
+  = @credit.credit_kind.condition
+p
+  strong= model_class.human_attribute_name(:rate) + ':'
+  br
+  = @credit.credit_kind.rate
+p
+  strong= model_class.human_attribute_name(:max_time) + ':'
+  br
+  = @credit.credit_kind.max_time
+p
+  strong= model_class.human_attribute_name(:form_kind) + ':'
+  br
+  = @credit.credit_kind.form_kind
+p
+  strong= model_class.human_attribute_name(:term) + ':'
+  br
+  = @credit.credit_kind.term
+p
+  strong= model_class.human_attribute_name(:currency) + ':'
+  br
+  = @credit.credit_kind.currency
+

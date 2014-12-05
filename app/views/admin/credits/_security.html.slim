@@ -1,0 +1,22 @@
+table.table-bordered
+  thead
+    tr
+      th Credit id
+      th Credit kind
+      th Credit amount
+      th Credit time
+      th Credit purpose
+      th Requester
+      th
+  tbody
+    - @credits.where(state:"new").each do |credit|
+      tr
+        td= link_to credit.id, admin_credit_path(credit)
+        td= credit.credit_kind.name
+        td= credit.amount
+        td= credit.time
+        td= credit.purpose
+        td= credit.user.email
+        td
+          = link_to 'Secure checked', change_state_admin_credit_path(credit, state:'secure'), method: :put, :class => 'btn btn-success btn-xs'
+          = link_to 'Reject', change_state_admin_credit_path(credit, state:'reject'), method: :put, :class => 'btn btn-danger btn-xs'

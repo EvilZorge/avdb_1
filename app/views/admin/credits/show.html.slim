@@ -1,0 +1,16 @@
+div role="tabpanel" 
+  ul.nav.nav-tabs role="tablist" 
+    li.active role="presentation" 
+      a aria-controls="credit" data-toggle="tab" href="#credit" role="tab"  Credit
+    li role="presentation"
+      - if !(@credit.user.legal_person.nil?)
+        a aria-controls="legal-person" data-toggle="tab" href="#legal-person" role="tab"  Person
+      - if !(@credit.user.natural_person.nil?)
+        a aria-controls="natural-person" data-toggle="tab" href="#natural-person" role="tab"  Person  
+
+  .tab-content
+    #credit.tab-pane.active role="tabpanel"  = render partial: 'credit'
+    - if !(@credit.user.legal_person.nil?)
+      #legal-person.tab-pane role="tabpanel"  = render partial: 'legal_person'
+    - if !(@credit.user.natural_person.nil?)
+      #natural-person.tab-pane role="tabpanel"  = render partial: 'natural_person'

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
+  resources :users, only: :show
   resources :balance
-  resource :users, only: :show
   resources :bank do
     collection do
       get :select
@@ -10,21 +10,42 @@ Rails.application.routes.draw do
       post :build
     end
   end
-
-  resources :natural_people do 
-    collection do 
-      get :send_email
-      get :multiple_email_send
-      get :send_sms
-    end
-  end
-  resources :legal_people do
+  resources :credits do
     collection do
-      get :send_email
-      get :multiple_email_send
-      get :send_sms
+      get :set_kind
     end
   end
+
+  authenticated :user, lambda { |u| u.role != 'user' } do
+    namespace :admin do
+      resources :natural_people do 
+        collection do 
+          get :send_email
+          get :multiple_email_send
+          get :send_sms
+        end
+      end
+      resources :legal_people do
+        collection do
+          get :send_email
+          get :multiple_email_send
+          get :send_sms
+        end
+      end
+      resources :credits do
+        member do
+          put :create_contract
+          put :change_state
+        end
+        collection do
+          get :contract_field
+        end
+      end
+    end
+  end
+  resources :legal_people, only: [:new,:create,:edit,:update]
+  resources :natural_people, only: [:new,:create,:edit,:update]
+  
   resources :people, only: :index
 
   root to: 'people#index'

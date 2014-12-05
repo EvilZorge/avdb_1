@@ -54,6 +54,11 @@
       = f.text_field :skype, :class => 'form-control'
     = error_span(@legal_person[:skype])
   .form-group
+    = f.label :income, :class => 'control-label'
+    .controls
+      = f.text_field :income, :class => 'form-control'
+    = error_span(@legal_person[:income])  
+  .form-group
     = f.label :creation_date, 'Creation date', :class => 'control-label'
     .controls
       = f.text_field :creation_date, :class => 'form-control'

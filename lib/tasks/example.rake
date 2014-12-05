@@ -12,6 +12,8 @@ namespace :db do
       person.phone = Faker::Base.numerify('+375(29) ### ####')
       person.email = Faker::Internet.email
       person.skype = Faker::Internet.user_name
+      person.age = [18..80].sample
+      person.income = rand(7)
       person.work_place = Ryba::Company.name(:solidity => 3)
       person.function = ['директор', 'уборщик(ца)', 'бухгалтер', 'программист', 'инженер', 'главный инженер', 'системный администратор',
                          'тестировщик', 'продавец', 'менеджер', 'сантехник', 'электрик', 'повар']
@@ -32,6 +34,7 @@ namespace :db do
       person.phone = Faker::Base.numerify('+375(29) ### ####')
       person.email = Faker::Internet.email
       person.skype = Faker::Internet.user_name
+      person.income = rand(10)
       person.creation_date = Faker::Date.backward(rand(5000))
     end
     puts 'All done'

@@ -1,0 +1,29 @@
+div
+  div
+    table.table-bordered
+      thead
+        tr
+          th Credit id
+          th Credit kind
+          th Credit amount
+          th Credit time
+          th Credit purpose
+          th Requester
+          th State
+          th
+      tbody
+        - @credits.where(state: "approved").each do |credit|
+          tr
+            td= link_to credit.id, admin_credit_path(credit)
+            td= credit.credit_kind.name
+            td= credit.amount
+            td= credit.time
+            td= credit.purpose
+            td= credit.user.email
+            td= credit.state
+            - if credit.contract.nil?        
+              td= link_to 'Create contract', create_contract_admin_credit_path(credit),method: :put, class:"btn btn-primary"
+            - else 
+              td 
+                a.contract data-id="#{credit.id}" Show contract
+    div.contract-field

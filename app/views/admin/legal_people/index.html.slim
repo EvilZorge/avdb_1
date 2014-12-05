@@ -7,8 +7,8 @@ div
   div.advanced_search_form#advanced_search  
     = render partial: 'advanced_search_form'    
 div
-  = form_tag multiple_email_send_legal_people_path, method: :get do
-      table.table-bordered
+  = form_tag multiple_email_send_admin_legal_people_path, method: :get do
+    table.table-bordered
       thead
         tr
           th
@@ -22,6 +22,7 @@ div
           th= sort_link @q, :phone, 'Phone'
           th= sort_link @q, :email, 'Email'
           th= sort_link @q, :skype, 'Skype'
+          th= sort_link @q, :income, 'Income'
           th= sort_link @q, :creation_date, 'Creation date'
           th
       tbody
@@ -38,11 +39,12 @@ div
             td= legal_person.phone
             td= legal_person.email
             td= legal_person.skype
+            td= legal_person.income
             td= legal_person.creation_date
             td
-              = link_to 'Edit', edit_legal_person_path(legal_person), :class => 'btn btn-xs btn-success'
-              = link_to t('.destroy', :default => t("helpers.links.destroy")), legal_person_path(legal_person), :method => :delete, :class => 'btn btn-xs btn-danger'
-              = link_to 'Send email', send_email_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
-              = link_to 'Send sms', send_sms_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
+              = link_to 'Edit', edit_admin_legal_person_path(legal_person), :class => 'btn btn-xs btn-success'
+              = link_to t('.destroy', :default => t("helpers.links.destroy")), admin_legal_person_path(legal_person), :method => :delete, :class => 'btn btn-xs btn-danger'
+              = link_to 'Send email', send_email_admin_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
+              = link_to 'Send sms', send_sms_admin_legal_people_path(id: legal_person.id), :class => 'btn btn-xs btn-warning'
     = submit_tag 'Send email to checked people',  :class => 'btn btn-success btn-s' 
   = will_paginate @people

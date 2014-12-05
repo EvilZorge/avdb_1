@@ -1,0 +1,28 @@
+div style="text-align: center"
+  - if !(current_user.role.user?)
+    h1 = @user.role
+    = link_to 'Moderation', admin_credits_path,class: "btn btn-primary"
+    - if current_user.role.admin?
+      = link_to 'Legal people page', admin_legal_people_path, class: "btn btn-primary"
+      = link_to 'Natural people page', admin_natural_people_path, class: "btn btn-primary"
+  - else   
+    - if @user.legal_person.nil? && @user.natural_person.nil?
+     
+        h3 Choose your personal data
+        div
+          = link_to 'Natural person', new_natural_person_path, class: "btn btn-primary"
+          '
+          = link_to 'Legal person', new_legal_person_path, class: "btn btn-primary"
+    - else 
+      - if @user.credit.nil?
+        = link_to  'Create credit request', new_credit_path, class: "btn btn-primary"
+      - else
+        - if @user.credit.state == "approved"
+          h4 Congrats!! Your request for credit was approved!!!
+        - else
+          h4 Credit id: 
+          = @user.credit.id
+          h4 Credit kind:
+          = @user.credit.credit_kind.name
+          h4 Credit state:
+          = @user.credit.state

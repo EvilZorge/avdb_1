@@ -11,6 +11,8 @@ class CreateNaturalPeople < ActiveRecord::Migration
       t.string :skype
       t.string :work_place
       t.string :function
+      t.string :income
+      t.integer :age
       t.string :marital_status
       t.timestamps
     end

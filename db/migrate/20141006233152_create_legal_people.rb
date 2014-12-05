@@ -8,6 +8,7 @@ class CreateLegalPeople < ActiveRecord::Migration
       t.string :accountant_general
       t.string :director
       t.string :sub_company
+      t.string :income
       t.string :phone
       t.string :email
       t.string :skype

@@ -2,7 +2,7 @@
   - @natural_person.errors.full_messages.each do |msg|
     div
       = msg
-= form_for @natural_person, html: { class: "form form-horizontal natural_person" } do |f|
+= form_for [:admin,@natural_person], html: { class: "form form-horizontal natural_person" } do |f|
   .form-group
     = f.label :name, 'Name', :class => 'control-label'
     .controls
@@ -53,6 +53,16 @@
     .controls
       = f.text_field :function, :class => 'form-control'
     = error_span(@natural_person[:function])
+  .form-group
+    = f.label :age, 'Age', :class => 'control-label'
+    .controls
+      = f.text_field :age, :class => 'form-control'
+    = error_span(@natural_person[:age])
+  .form-group
+    = f.label :income, 'Income', :class => 'control-label'
+    .controls
+      = f.text_field :income, :class => 'form-control'
+    = error_span(@natural_person[:income])  
   .form-group
     = f.label :marital_status, 'Marital status', :class => 'control-label'
     .controls

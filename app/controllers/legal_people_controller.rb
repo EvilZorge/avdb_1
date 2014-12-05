@@ -2,14 +2,16 @@ class LegalPeopleController < ApplicationController
   load_and_authorize_resource
 
   def new
+
   end
 
   def create
+    @legal_person.user = current_user
     if @legal_person.save
-      flash[:notice] = 'Юридическое лицо создано'
-      redirect_to :back
+      flash[:notice] = 'Legal person was created'
+      redirect_to @legal_person.user
     else
-      flash[:alert] = 'Проверьте ваши данные'
+      flash[:alert] = 'Check your data'
       render 'new'
     end
   end
@@ -19,10 +21,10 @@ class LegalPeopleController < ApplicationController
 
   def update
     if @legal_person.update_attributes(legal_person_params)
-      flash[:notice] = 'Юридическое лицо обновлено'
-      redirect_to :back
+      flash[:notice] = 'Legal person was updated'
+      redirect_to @legal_person.user
     else
-      flash[:alert] = 'Проверьте ваши данные'
+      flash[:alert] = 'Check your data'
       render 'edit'
     end
   end
@@ -31,6 +33,6 @@ class LegalPeopleController < ApplicationController
 
   def legal_person_params
     params.require(:legal_person).permit(:name, :address, :registration_code, :leader, :accountant_general, :director, :sub_company, :phone,
-                                         :email, :skype, :creation_date)
+                                         :email, :skype, :creation_date, :user_id)
   end
 end

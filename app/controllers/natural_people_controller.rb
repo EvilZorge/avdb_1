@@ -5,9 +5,10 @@ class NaturalPeopleController < ApplicationController
   end
 
   def create
+    @natural_person.user = current_user
     if @natural_person.save
       flash[:notice] = 'Физическое лицо создано'
-      redirect_to :back
+      redirect_to @natural_person.user
     else
       flash[:alert] = 'Проверьте ваши данные'
       render 'new'
@@ -20,7 +21,7 @@ class NaturalPeopleController < ApplicationController
   def update
     if @natural_person.update_attributes(natural_person_params)
       flash[:notice] = 'Физическое лицо обновлено'
-      redirect_to :back
+      redirect_to @natural_person.user
     else
       flash[:alert] = 'Проверьте ваши данные'
       render 'edit'
@@ -31,7 +32,7 @@ class NaturalPeopleController < ApplicationController
 
   def natural_person_params
     params.require(:natural_person).permit(:name, :surname, :middlename, :address, :passport_data, :phone, :email, :skype,
-    :work_place, :function, :marital_status)
+    :work_place, :function, :marital_status, :user_id)
   end
 
 end

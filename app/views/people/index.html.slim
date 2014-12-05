@@ -1,9 +1,12 @@
 div style="text-align: center"
   h1 Welcome to our bank
-  strong Sign In or Sign Up to continue 
-  div 
-    br
-    = link_to 'Sign in', new_user_session_path, class:"btn btn-success"
-    '
-    = link_to 'Sign up', new_user_registration_path, class:"btn btn-default"
+  - if current_user
+    = link_to 'Go to your user account', user_path(current_user), class:"btn btn-primary"
+  - else  
+    strong Sign In or Sign Up to continue 
+    div 
+      br
+      = link_to 'Sign in', new_user_session_path, class:"btn btn-success"
+      '
+      = link_to 'Sign up', new_user_registration_path, class:"btn btn-default"
 

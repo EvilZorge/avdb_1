@@ -1,0 +1,6 @@
+- if current_user.role.admin?
+  = render partial: "admin"
+- if current_user.role.security?
+  = render partial: "security"
+- if current_user.role.analizer?
+  = render partial: "analizer"

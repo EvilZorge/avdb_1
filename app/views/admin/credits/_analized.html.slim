@@ -1,0 +1,24 @@
+table.table-bordered
+  thead
+    tr
+      th Credit id
+      th Credit kind
+      th Credit amount
+      th Credit time
+      th Credit purpose
+      th Requester
+      th State
+      th 
+  tbody
+    - @credits.where(state: "analized").each do |credit|
+      tr
+        td= link_to credit.id, admin_credit_path(credit)
+        td= credit.credit_kind.name
+        td= credit.amount
+        td= credit.time
+        td= credit.purpose
+        td= credit.user.email
+        td= credit.state
+        td
+          = link_to 'Approve', change_state_admin_credit_path(credit, state:'approve'), method: :put, :class => 'btn btn-success btn-xs'
+          = link_to 'Reject', change_state_admin_credit_path(credit, state:'reject'), method: :put, :class => 'btn btn-danger btn-xs'

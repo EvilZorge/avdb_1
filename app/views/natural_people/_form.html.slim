@@ -54,6 +54,16 @@
       = f.text_field :function, :class => 'form-control'
     = error_span(@natural_person[:function])
   .form-group
+    = f.label :age, 'Age', :class => 'control-label'
+    .controls
+      = f.text_field :age, :class => 'form-control'
+    = error_span(@natural_person[:age])
+  .form-group
+    = f.label :income, 'Income', :class => 'control-label'
+    .controls
+      = f.text_field :income, :class => 'form-control'
+    = error_span(@natural_person[:income])
+  .form-group
     = f.label :marital_status, 'Marital status', :class => 'control-label'
     .controls
       = f.text_field :marital_status, :class => 'form-control'

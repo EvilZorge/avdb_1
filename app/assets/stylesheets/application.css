@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap-datepicker3
+ *= require devise_bootstrap_views
  *= require_self
  *= require_tree .
  */
@@ -42,4 +43,8 @@ div.advanced_search_form {
 
 .search-fields {
   display: none;
+}
+
+.contract-field {
+  float: right;
 }

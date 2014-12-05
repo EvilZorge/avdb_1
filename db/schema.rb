@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141204171731) do
+ActiveRecord::Schema.define(version: 20141205160108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,31 @@ ActiveRecord::Schema.define(version: 20141204171731) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "contracts", force: true do |t|
+    t.integer "credit_id"
+    t.string  "money"
+  end
+
+  create_table "credit_kinds", force: true do |t|
+    t.string "name"
+    t.string "max_amount"
+    t.string "condition"
+    t.string "rate"
+    t.string "max_time"
+    t.string "form_kind"
+    t.string "term"
+    t.string "currency"
+  end
+
+  create_table "credits", force: true do |t|
+    t.integer "user_id"
+    t.string  "purpose"
+    t.string  "amount"
+    t.string  "time"
+    t.string  "state",          default: "new"
+    t.integer "credit_kind_id"
   end
 
   create_table "currencies", force: true do |t|
@@ -41,6 +66,7 @@ ActiveRecord::Schema.define(version: 20141204171731) do
     t.string   "accountant_general"
     t.string   "director"
     t.string   "sub_company"
+    t.string   "income"
     t.string   "phone"
     t.string   "email"
     t.string   "skype"
@@ -63,6 +89,8 @@ ActiveRecord::Schema.define(version: 20141204171731) do
     t.string   "skype"
     t.string   "work_place"
     t.string   "function"
+    t.string   "income"
+    t.integer  "age"
     t.string   "marital_status"
     t.datetime "created_at"
     t.datetime "updated_at"

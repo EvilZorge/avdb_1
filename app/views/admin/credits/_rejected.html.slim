@@ -1,0 +1,20 @@
+table.table-bordered
+  thead
+    tr
+      th Credit id
+      th Credit kind
+      th Credit amount
+      th Credit time
+      th Credit purpose
+      th Requester
+      th State
+  tbody
+    - @credits.where(state: "rejected").each do |credit|
+      tr
+        td= link_to credit.id, admin_credit_path(credit)
+        td= credit.credit_kind.name
+        td= credit.amount
+        td= credit.time
+        td= credit.purpose
+        td= credit.user.email
+        td= credit.state

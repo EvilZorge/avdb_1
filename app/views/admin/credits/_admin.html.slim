@@ -1,0 +1,13 @@
+div role="tabpanel" 
+  ul.nav.nav-tabs role="tablist" 
+    li.active role="presentation" 
+      a aria-controls="approved" data-toggle="tab" href="#approved" role="tab"  Approved
+    li role="presentation" 
+      a aria-controls="analized" data-toggle="tab" href="#analized" role="tab"  Analized
+    li role="presentation" 
+      a aria-controls="rejected" data-toggle="tab" href="#rejected" role="tab"  Rejected
+
+  .tab-content
+    #approved.tab-pane.active role="tabpanel"  = render partial: 'approved'
+    #analized.tab-pane role="tabpanel"  = render partial: 'analized'
+    #rejected.tab-pane role="tabpanel"  = render partial: 'rejected'
