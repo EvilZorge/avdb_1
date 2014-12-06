@@ -21,10 +21,10 @@ class Admin::CreditsController < ApplicationController
       end
       if @credit.state == "rejected"
           if !(@credit.user.legal_person.nil?)
-            PersonMailer.welcome_email(@credit.user.legal_person).deliver
+            PersonMailer.reject_email(@credit.user.legal_person).deliver
             flash[:success] = "Email was send to #{@credit.user.legal_person.name}"
           else 
-            PersonMailer.welcome_email(@credit.user.natural_person).deliver
+            PersonMailer.reject_email(@credit.user.natural_person).deliver
             flash[:success] = "Email was send to #{@credit.user.natural_person.name}"
           end
       end
