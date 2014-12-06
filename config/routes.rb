@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   resources :credits do
     collection do
       get :set_kind
+      get :contract_field
+      get :payment
     end
   end
 
@@ -39,6 +41,7 @@ Rails.application.routes.draw do
         end
         collection do
           get :contract_field
+          get :payment
         end
       end
     end

@@ -19,10 +19,17 @@ div style="text-align: center"
       - else
         - if @user.credit.state == "approved"
           h4 Congrats!! Your request for credit was approved!!!
+          - if !(@user.credit.contract.nil?)
+            a.contract data-id="#{@user.credit.id}" Show contract
+            br
+            a.payment data-id="#{@user.credit.id}" Show payment 
+            div.contract-field          
         - else
+          h2 Credit request was submitted! Pls, wait until we check it!
           h4 Credit id: 
           = @user.credit.id
           h4 Credit kind:
           = @user.credit.credit_kind.name
-          h4 Credit state:
+          h4 Your credit state:
           = @user.credit.state
+

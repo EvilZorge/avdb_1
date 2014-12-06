@@ -15,13 +15,25 @@ $(document).ready(function() {
   $(".contract").on('click', function() {
     var search = this.dataset.id;;
     $.ajax({
-      url: '/admin/credits/contract_field',
+      url: '/credits/contract_field',
       type: 'get',
       data: {search: search},
       success: function(result) {
         $(".contract-field").html('');
-        // debugger;
-        $(".contract-field").html(JST['views/contract'](result.data));
+        $(".contract-field").html(JST['views/contract'](result));
+      }
+    })
+  })
+
+  $(".payment").on('click', function() {
+    var search = this.dataset.id;;
+    $.ajax({
+      url: '/credits/payment',
+      type: 'get',
+      data: {search: search},
+      success: function(result) {
+        $(".contract-field").html('');
+        $(".contract-field").html(JST['views/payment'](result));
       }
     })
   })

@@ -1,0 +1,110 @@
+country_list = [
+  [ "Belarus"],
+  [ "Russia" ]
+]
+
+city_list = [
+  ["Minsk", 1],
+  ["Grondo", 1],
+  ["Mogilev", 1],
+  ["Brest", 1],
+  ["Vitebsk", 1],
+  ["Gomel", 1],
+  ["Moscow", 2]
+];
+
+make_list = [["BMW"],["AUDI"]];
+model_list = [["X6",1],["A8",2]];
+condition_list = [["used"],["new"]];
+style_list = [["test"],["test1"]]
+mileage_list = [["test"],["test1"]]
+year_list = [["test"],["test1"]]
+engine_list = [["test"],["test1"]]
+engine_volume_list = [["test"],["test1"]]
+transmission_list = [["test"],["test1"]]
+door_list = [["test"],["test1"]]
+color_list = [["test"],["test1"]]
+feature_list = [["test"],["test1"]]
+
+User.create do |u|
+	u.email="evilzorge@gmail.com"
+	u.password="12345678"
+	u.password_confirmation="12345678"
+  u.role="admin"
+  u.nickname = "test"
+  u.name = "test"
+  u.surname = "test"
+end
+
+User.create do |u|
+  u.email="envoyfromgalaxy@ya.ru"
+  u.password="12345678"
+  u.password_confirmation="12345678"
+  u.role="user"
+  u.nickname = "test1"
+  u.name = "test1"
+  u.surname = "test1"
+end
+
+Type.create do |u|
+  u.name = 'Sell'
+end
+
+Type.create do |u|
+  u.name = 'Buy'
+end
+
+Type.create do |u|
+  u.name = 'Change'
+end
+
+
+country_list.each do |name|
+  Country.create(name: name.join(""))
+end
+
+city_list.each do |name, country_id|
+  City.create(name: name, country_id: country_id)
+end
+
+make_list.each do |name|
+  Make.create(name: name.join(""))
+end
+
+model_list.each do |name, make_id|
+  Model.create(name: name, make_id: make_id)
+end
+
+condition_list.each do |name|
+  Condition.create(name: name.join(""))
+end
+
+style_list.each do |name|
+  Style.create(name: name.join(""))
+end
+
+mileage_list.each do |name|
+  Mileage.create(name: name.join(""))
+end
+year_list.each do |name|
+  Year.create(name: name.join(""))
+end
+engine_list.each do |name|
+  Engine.create(name: name.join(""))
+end
+engine_volume_list.each do |name|
+  EngineVolume.create(name: name.join(""))
+end
+transmission_list.each do |name|
+  Transmission.create(name: name.join(""))
+end
+door_list.each do |name|
+  Door.create(name: name.join(""))
+end
+color_list.each do |name|
+  Color.create(name: name.join(""))
+end
+feature_list.each do |name|
+  Feature.create(name: name.join(""))
+end
+Car.create(country_id:1, city_id:1, make_id:1, model_id:1, condition_id:1, style_id:1, mileage_id:1, engine_id:1, year_id:1, engine_volume_id:1, transmission_id:1, door_id:1, color_id:1)

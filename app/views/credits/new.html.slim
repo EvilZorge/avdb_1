@@ -1,21 +1,31 @@
-= form_for @credit, html: { class: "form form-horizontal credit" } do |f|
+= nested_form_for [@credit], html: { multipart: true }, class: "form form-horizontal credit"  do |f|
   .form-group
-  = f.label :credit_kind_id, :class => 'control-label'
-  .controls
-    = f.select :credit_kind_id, CreditKind.all.collect {|p| [ p.name,p.id ] }, {:class => 'form-control'}, {id:"credit-kind"}
+    = f.label :credit_kind_id, :class => 'control-label'
+    .controls
+      = f.select :credit_kind_id, CreditKind.all.collect {|p| [ p.name,p.id ] }, {:class => 'form-control'}, {id:"credit-kind"}
   div.credit-kind  
   .form-group    
-  = f.label :amount, :class => 'control-label'
-  .controls
-    = f.text_field :amount, :class => 'form-control'
+    = f.label :amount, :class => 'control-label'
+    .controls
+      = f.text_field :amount, :class => 'form-control'
   .form-group    
-  = f.label :time, :class => 'control-label'
-  .controls
-    = f.text_field :time, :class => 'form-control'
+    = f.label :time, :class => 'control-label'
+    .controls
+      = f.text_field :time, :class => 'form-control'
   .form-group    
-  = f.label :purpose, :class => 'control-label'
-  .controls
-    = f.text_field :purpose, :class => 'form-control'
+    = f.label :purpose, :class => 'control-label'
+    .controls
+      = f.text_field :purpose, :class => 'form-control'
+  .form-group
+    = f.fields_for :credit_files do |builder|
+      - unless builder.object.new_record?
+        = link_to builder.object.document
+        = builder.link_to_remove 'Delete this document', data: {confirm: 'You sure?'}, :class => 'btn'
+      - else
+        = builder.label :document
+        = builder.file_field :document
+        = builder.link_to_remove 'remove this field'
+    = f.link_to_add 'Add document', :credit_files, :class => 'btn'  
   = f.submit nil, :class => 'btn btn-primary'
   '
   = link_to t('.cancel', :default => t("helpers.links.cancel")), :back, :class => 'btn'  

@@ -17,8 +17,17 @@ class Admin::CreditsController < ApplicationController
           else 
             PersonMailer.welcome_email(@credit.user.natural_person).deliver
             flash[:success] = "Email was send to #{@credit.user.natural_person.name}"
-          end   
-      end      
+          end
+      end
+      if @credit.state == "rejected"
+          if !(@credit.user.legal_person.nil?)
+            PersonMailer.welcome_email(@credit.user.legal_person).deliver
+            flash[:success] = "Email was send to #{@credit.user.legal_person.name}"
+          else 
+            PersonMailer.welcome_email(@credit.user.natural_person).deliver
+            flash[:success] = "Email was send to #{@credit.user.natural_person.name}"
+          end
+      end
       flash[:notice] = "Credit's state was changed to #{@credit.state}!"
       redirect_to :back
     else
@@ -42,15 +51,10 @@ class Admin::CreditsController < ApplicationController
     redirect_to :back
   end
 
-  def contract_field
-    @credit = Credit.find(params[:search])
-    @contract = @credit.contract
-    render json: {data: @contract}
-  end
-
   private
 
   def credit_params
     params.require(:credit).permit(:state)
   end
+
 end

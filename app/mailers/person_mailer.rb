@@ -4,4 +4,9 @@ class PersonMailer < ActionMailer::Base
     @person = person
     mail(:to => @person.email, :subject => "Registered", :from => "example@gmail.com")
   end
+
+  def reject_email(person)
+    @person = person
+    mail(:to => @person.email, :subject => "Registered", :from => "example@gmail.com")
+  end
 end

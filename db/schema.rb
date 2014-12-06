@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205160108) do
+ActiveRecord::Schema.define(version: 20141205223235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,8 +24,20 @@ ActiveRecord::Schema.define(version: 20141205160108) do
   end
 
   create_table "contracts", force: true do |t|
-    t.integer "credit_id"
-    t.string  "money"
+    t.integer  "credit_id"
+    t.string   "money"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "credit_files", force: true do |t|
+    t.integer  "credit_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   create_table "credit_kinds", force: true do |t|
@@ -40,12 +52,14 @@ ActiveRecord::Schema.define(version: 20141205160108) do
   end
 
   create_table "credits", force: true do |t|
-    t.integer "user_id"
-    t.string  "purpose"
-    t.string  "amount"
-    t.string  "time"
-    t.string  "state",          default: "new"
-    t.integer "credit_kind_id"
+    t.integer  "user_id"
+    t.string   "purpose"
+    t.string   "amount"
+    t.string   "time"
+    t.string   "state",          default: "new"
+    t.integer  "credit_kind_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "currencies", force: true do |t|

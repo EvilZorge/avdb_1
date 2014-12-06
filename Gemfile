@@ -50,3 +50,5 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 gem 'enumerize'
 gem 'state_machine'
+gem "paperclip"
+gem 'nested_form'

@@ -7,6 +7,7 @@ class CreateCredits < ActiveRecord::Migration
       t.string :time
       t.string :state, default: "new"
       t.belongs_to :credit_kind
+      t.timestamps
     end
   end
 end

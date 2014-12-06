@@ -45,4 +45,11 @@ p
   strong= model_class.human_attribute_name(:currency) + ':'
   br
   = @credit.credit_kind.currency
+- if !(@credit.credit_files.nil?)
+  p   
+    strong= model_class.human_attribute_name(:document) + ':'
+    br
+    - @credit.credit_files.each do |file|
+      div
+        = link_to file.document_file_name, file.document.url
 

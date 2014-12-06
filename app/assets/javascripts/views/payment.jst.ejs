@@ -1,0 +1,13 @@
+<div class="payment-table">
+<div style="text-align: center">Your full amount: <%= data[1].amount %> belarusian rubles</br> with credit rate: <%= data[3].rate %>%</div>
+<table class="changeData">
+  <tbody>
+    <% data[2].map(function(month) { %>
+      <tr>
+        <td><strong><%= month %></strong></td>
+        <td><%= data[0].money %></td>
+      </tr>
+    <% }) %>
+  </tbody> 
+</table>
+</div>

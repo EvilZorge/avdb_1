@@ -6,6 +6,9 @@ class Credit < ActiveRecord::Base
   validates :amount, presence: true, length: { minimum: 1,  maximum: 10 }
 
   has_one :contract
+  has_many :credit_files, dependent: :destroy
+  accepts_nested_attributes_for :credit_files,:reject_if => lambda { |p| p['document'].blank? },
+    allow_destroy: true
   state_machine :state, initial: :new do
 
     event :secure do

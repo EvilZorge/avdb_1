@@ -13,7 +13,7 @@ class Ability
           user.legal_person.nil? && user.natural_person.nil? 
         end
         can [:edit,:update,:destroy], LegalPerson, user_id: user.id
-        can [:create,:set_kind], Credit 
+        can [:create,:set_kind, :payment, :contract_field], Credit 
       elsif user.role.security?
         can [:read,:change_state], Credit, state: "new"
         can :manage, User, id: user.id
@@ -21,11 +21,11 @@ class Ability
         can [:read,:change_state], Credit, state: "secured"
         can :manage, User, id: user.id
       elsif user.role.admin?
-        can [:read,:change_state], Credit, state: ["approved", "rejected", "committed"]
+        can [:read,:change_state], Credit, state: ["approved", "rejected", "analized"]
         can [:read, :update, :destroy], NaturalPerson
         can [:read, :update, :destroy], LegalPerson
         can :manage, User
-        can [:create_contract,:contract_field], Credit
+        can [:create_contract,:contract_field,:payment], Credit
       end   
     end
   end
